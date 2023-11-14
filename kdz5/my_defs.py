@@ -6,11 +6,12 @@ matplotlib.use('TKAgg')
 
 #A = np.array([[2, 0, 3], [1, 3, -3]])
 A = np.array([[5, 4, 2, 2], [1, 1, 5, 7]]) 
-col_iter = 100
+col_iter = 1000
 
 u_list = []
 
 i = randint(0, A.shape[0]-1)
+
 B_cycle = np.zeros(A.shape[1])
 A_cycle = np.zeros(A.shape[0])
 u_k = 0
