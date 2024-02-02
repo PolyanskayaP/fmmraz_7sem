@@ -1,7 +1,8 @@
 from random import random
 import numpy as np
+import matplotlib.pyplot as plt
 
-n = 5
+n = 50
 A = np.array([[1,4],[3,5]]) 
 B = np.array([[5,2],[4,8]]) 
 
@@ -24,17 +25,20 @@ def gener_f1_f2 (n):
     p = np.array(p)
     q = np.array(q)
     list_f_1_2 = []
-    #list_f_1_2 = np.array()
     for i in range(n):
-        #f1 = [p[i], q[i]] * A * np.array( [[q[i]],[1-q[i]]] )
-        #f2 = [p[i], q[i]] * B * np.array( [[q[i]],[1-q[i]]] )
-        f1 = np.dot([p[i], q[i]], A, np.array( [[q[i]],[1-q[i]]] ))
-        f2 = np.dot([p[i], q[i]], B, np.array( [[q[i]],[1-q[i]]] ))
-        list_f_1_2.append([f1, f2])
-        
-      #  print(p[i], q[i])
-      #  print(A)
-      #  print(np.array( [[q[i]],[1-q[i]]] ))
-    return list_f_1_2
+        pp = np.array([[p[i], 1-p[i]]])
+        qq = np.array([[q[i]],[1-q[i]]])
+        f1 = np.dot ( np.dot(pp , A) , qq)
+        f2 = np.dot ( np.dot(pp , B) , qq)
+        list_f_1_2.append([f1[0][0], f2[0][0]])
+        #print("f1:", f1[0][0], " f2:", f2[0][0])
+    return np.array(list_f_1_2)
 
-print(gener_f1_f2(n))
+f1f2 = gener_f1_f2(n)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(f1f2[:,0], f1f2[:,1], color = 'blue', marker = '*')  #точки
+ax.scatter(A, B, color = 'red', marker = '*')  #точки
+
+plt.show()
