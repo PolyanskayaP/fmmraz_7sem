@@ -50,7 +50,8 @@ print(pareidx)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*')  #точки
-ax.scatter(A, B, color = 'red', marker = '*')  #точки
-ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*')  #точки
+ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*', label='Не Парето')  #точки
+ax.scatter(A, B, color = 'red', marker = '*', label='A и B')  #точки
+ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', label='Парето')  #точки
+ax.legend()
 plt.show()
