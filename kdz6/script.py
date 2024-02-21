@@ -1,10 +1,13 @@
 from random import random
 import numpy as np
 import matplotlib.pyplot as plt
+import pareto_functions as pareto
 
-n = 50
-A = np.array([[1,4],[3,5]]) 
-B = np.array([[5,2],[4,8]]) 
+n = 1000
+#A = np.array([[1,4],[3,5]]) 
+#B = np.array([[5,2],[4,8]]) 
+A = np.array([[5,3],[3,8]]) 
+B = np.array([[5,15],[20,5]]) 
 
 def gener_p_q (n):
     #pq_list = []
@@ -35,10 +38,19 @@ def gener_f1_f2 (n):
     return np.array(list_f_1_2)
 
 f1f2 = gener_f1_f2(n)
-
+'''
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(f1f2[:,0], f1f2[:,1], color = 'blue', marker = '*')  #точки
 ax.scatter(A, B, color = 'red', marker = '*')  #точки
+plt.show()
+'''
+pareidx, not_pareidx = pareto.find_pareto(f1f2[:,0], f1f2[:,1], "MAX")
+print(pareidx)
 
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*')  #точки
+ax.scatter(A, B, color = 'red', marker = '*')  #точки
+ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*')  #точки
 plt.show()
