@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import pareto_functions as pareto
 
 n = 1000
-#A = np.array([[1,4],[3,5]]) 
+#A = np.array([[1,4],[3,5]]) #6 вариант
 #B = np.array([[5,2],[4,8]]) 
-A = np.array([[5,3],[3,8]]) 
+A = np.array([[5,3],[3,8]])  #7 вариант
 B = np.array([[5,15],[20,5]]) 
 
 def gener_p_q (n):

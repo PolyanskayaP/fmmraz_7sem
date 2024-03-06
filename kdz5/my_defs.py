@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib 
 matplotlib.use('TKAgg')
 
-A = np.array([[1, 4], [3, 5]])
+#A = np.array([[1, 4], [3, 5]])
+A = np.array([[5,3],[3,8]]) 
 #A = np.array([[5, 4, 2, 2], [1, 1, 5, 7]]) 
 col_iter = 1000
 
