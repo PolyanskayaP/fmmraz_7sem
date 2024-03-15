@@ -2,6 +2,10 @@ from random import random
 import numpy as np
 import matplotlib.pyplot as plt
 import pareto_functions as pareto
+import nash_functions
+import iter_brown 
+
+#Надо доделать равновесие Нэша (если больше 1 случая): IF-ом 0 1, у нас от 0 до 1 вообще-то!!!! 
 
 n = 1000
 #A = np.array([[1,4],[3,5]]) #6 вариант
@@ -48,10 +52,28 @@ plt.show()
 pareidx, not_pareidx = pareto.find_pareto(f1f2[:,0], f1f2[:,1], "MAX")
 print(pareidx)
 
+fA_N, fB_N = nash_functions.nash(A, B)
+print(fA_N, fB_N)
+
+p_zvA, q_zvA, v_A = iter_brown.brown(A)
+p_zvB, q_zvB, v_B = iter_brown.brown(B)
+
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*', label='Не Парето')  #точки
 ax.scatter(A, B, color = 'red', marker = '*', label='A и B')  #точки
 ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', label='Парето')  #точки
+#ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
+ax.scatter(v_A, v_B, color = 'purple', marker = '*', label='т. гарант. реш.')
 ax.legend()
-plt.show()
+#plt.show()
+
+fig = plt.figure() 
+ax = fig.add_subplot(111)
+ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*', label='Не Парето')  #точки
+ax.scatter(A, B, color = 'red', marker = '*', label='A и B')  #точки
+ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', label='Парето')  #точки
+ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
+#ax.scatter(v_A, v_B, color = 'purple', marker = '*', label='т. гарант. реш.')
+ax.legend()
+plt.show() #
