@@ -2,6 +2,7 @@ import random
 import numpy as np
 
 A = np.array([[5, 4, 2, 2], [1, 1, 5, 7]]) 
+#A = np.array([[5,3],[3,8]])  #7 вариант не работает
 
 n_konveyer = 1000
 sum_win_1 = 0

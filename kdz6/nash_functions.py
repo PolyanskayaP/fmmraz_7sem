@@ -17,6 +17,7 @@ def nash(A, B): #A = np.array([[5,3],[3,8]])
     #p0_N, p1_N, q0_N, q1_N = N_dot(C, alpha, D, beta)
     
     fA_N, fB_N = fAB_N(A, B,  C, alpha, D, beta)
+    return fA_N, fB_N
 
 def neravenstva(C, alpha, D, beta):
     pass
