@@ -70,6 +70,19 @@ def fAB_N(A, B,  C, alpha, D, beta):
     fA = np.dot ( np.dot([p0, p1] , A) , np.array([[q0],[q1]]))
     fB = np.dot ( np.dot([p0, p1] , B) , np.array([[q0],[q1]]))
     return list(fA)[0], list(fB)[0]
+
+def alfu_betu_itd(A, B):
+    C = A[i1][i1] - A[i2][i1] - A[i1][i2] + A[i2][i2]
+    alpha = A[i2][i2] - A[i1][i2]
+    D = B[i1][i1] - B[i2][i1] - B[i1][i2] + B[i2][i2]
+    beta = B[i2][i2] - B[i2][i1]
+    return alpha, beta, C, D
+
+def prosto_p_q(A, B):
+    alpha, beta, C, D = alfu_betu_itd(A, B)
+    q = alpha / C 
+    p = beta / D
+    return p, q
     
 A = np.array([[5,3],[3,8]])  #7 вариант
 B = np.array([[5,15],[20,5]]) 

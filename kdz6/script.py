@@ -42,13 +42,7 @@ def gener_f1_f2 (n):
     return np.array(list_f_1_2)
 
 f1f2 = gener_f1_f2(n)
-'''
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.scatter(f1f2[:,0], f1f2[:,1], color = 'blue', marker = '*')  #точки
-ax.scatter(A, B, color = 'red', marker = '*')  #точки
-plt.show()
-'''
+
 pareidx, not_pareidx = pareto.find_pareto(f1f2[:,0], f1f2[:,1], "MAX")
 print(pareidx)
 
@@ -57,6 +51,7 @@ print(fA_N, fB_N)
 
 p_zvA, q_zvA, v_A = iter_brown.brown(A)
 p_zvB, q_zvB, v_B = iter_brown.brown(B)
+print(v_A, v_B)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -66,7 +61,7 @@ ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', labe
 #ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
 ax.scatter(v_A, v_B, color = 'purple', marker = '*', label='т. гарант. реш.')
 ax.legend()
-#plt.show()
+#plt.show() чтобы 2 графика одновременно чтобы высветить
 
 fig = plt.figure() 
 ax = fig.add_subplot(111)
