@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pareto_functions as pareto
 import nash_functions
 import iter_brown 
+import iter_model_nash
 
 #Надо доделать равновесие Нэша (если больше 1 случая): IF-ом 0 1, у нас от 0 до 1 вообще-то!!!! 
 
@@ -44,14 +45,14 @@ def gener_f1_f2 (n):
 f1f2 = gener_f1_f2(n)
 
 pareidx, not_pareidx = pareto.find_pareto(f1f2[:,0], f1f2[:,1], "MAX")
-print(pareidx)
+#print(pareidx)
 
 fA_N, fB_N = nash_functions.nash(A, B)
-print(fA_N, fB_N)
+#print(fA_N, fB_N)
 
 p_zvA, q_zvA, v_A = iter_brown.brown(A)
 p_zvB, q_zvB, v_B = iter_brown.brown(B)
-print(v_A, v_B)
+#print(v_A, v_B)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -72,3 +73,5 @@ ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по
 #ax.scatter(v_A, v_B, color = 'purple', marker = '*', label='т. гарант. реш.')
 ax.legend()
 plt.show() #
+
+iter_model_nash.it_mod(A, B, 0.614, 0.70, 100)
