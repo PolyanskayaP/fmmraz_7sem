@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 #print("ыыыыы",p, q)
 def it_mod(A, B, p_volna, q_volna, n):
     pp, qq = nash_functions.prosto_p_q(A, B) #p and q from неравенства Нэша
+   # print(pp, qq)
     p_zvA, q_zvA, v_A_f1_Nash = iter_brown.brown(A)
     p_zvB, q_zvB, v_B_f2_Nash = iter_brown.brown(B)
     #print("ыыы", v_A_f1_Nash, v_B_f2_Nash)
@@ -24,9 +25,9 @@ def it_mod(A, B, p_volna, q_volna, n):
             j = 2
         p = random.uniform(0, 1)
         if (p <= p_volna):
-            i = 1
+            i = 2#1
         else:
-            i = 2
+            i = 1#2
         a = A[i-1,j-1]
         b = B[i-1,j-1]
         #a = A[j-1,i-1]
@@ -46,11 +47,11 @@ def it_mod(A, B, p_volna, q_volna, n):
             j = 1
         else:
             j = 2
-        p = random.uniform(0, 1)
+        p = random.uniform(0, 1) 
         if (p <= pp):
-            i = 1
+            i = 2#1
         else:
-            i = 2
+            i = 1#2
         a = A[i-1,j-1]
         b = B[i-1,j-1]
         list_a_II.append(a)
@@ -81,7 +82,7 @@ def it_mod(A, B, p_volna, q_volna, n):
     #ax_2.scatter(list(range(n)), list_a_II, color = 'blue', marker = '.', label='')  #точки
     ax_4.scatter(list(range(n)), list_b_II, color = 'red', marker = '.', label='')  #точки
     
-    sr_ar_f1 = sum(list_a)/n
+    sr_ar_f1 = (sum(list_a))/n
     print(sr_ar_f1, " <= ", "4.428")#v_A_f1_Nash)
     
     sr_ar_f2 = sum(list_b_II)/n
