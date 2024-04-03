@@ -14,26 +14,29 @@ def it_mod(A, B, p_volna, q_volna, n):
     #print("ыыы", v_A_f1_Nash, v_B_f2_Nash)
     list_a = []
     list_b = [] 
+    qq = 0.714
+    pp = 0.6
     for ind in range(n):
         #1 игрок
         j = 1
         i = 1
         q = random.uniform(0, 1)
+        #print(q)
         if (q <= qq):
             j = 1
         else:
             j = 2
         p = random.uniform(0, 1)
         if (p <= p_volna):
-            i = 2#1
+            i = 1#1
         else:
-            i = 1#2
+            i = 2#2
         a = A[i-1,j-1]
-        b = B[i-1,j-1]
+      #  b = B[i-1,j-1]
         #a = A[j-1,i-1]
         #b = B[j-1,i-1]
         list_a.append(a)
-        list_b.append(b)
+      #  list_b.append(b)
         
     ####
     list_a_II = []
@@ -49,12 +52,12 @@ def it_mod(A, B, p_volna, q_volna, n):
             j = 2
         p = random.uniform(0, 1) 
         if (p <= pp):
-            i = 2#1
+            i = 1#1
         else:
-            i = 1#2
-        a = A[i-1,j-1]
+            i = 2#2
+      #  a = A[i-1,j-1]
         b = B[i-1,j-1]
-        list_a_II.append(a)
+      #  list_a_II.append(a)
         list_b_II.append(b)
     
     fig = plt.figure()
@@ -93,3 +96,4 @@ def it_mod(A, B, p_volna, q_volna, n):
 #A = np.array([[5,3],[3,8]])  #7 вариант
 #B = np.array([[5,15],[20,5]]) 
 #it_mod(A, B, 0.614, 0.70, 1000)
+#print(A[0,1])

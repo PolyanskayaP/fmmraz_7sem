@@ -74,4 +74,4 @@ ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по
 ax.legend()
 plt.show() #
 
-iter_model_nash.it_mod(A, B, 0.1, 0.1, 100) #A, B, p_volna, q_volna, n # 0.6 0.714
+iter_model_nash.it_mod(A, B, 0.1, 0.1, 10) #A, B, p_volna, q_volna, n # 0.6 0.714
