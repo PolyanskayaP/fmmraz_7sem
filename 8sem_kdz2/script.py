@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import pareto_functions as pareto
 import nash_functions
 import iter_brown 
-import iter_model_nash
+import iter_model_nash 
+import functions
 
 #Надо доделать равновесие Нэша (если больше 1 случая): IF-ом 0 1, у нас от 0 до 1 вообще-то!!!! 
 
@@ -54,12 +55,18 @@ p_zvA, q_zvA, v_A = iter_brown.brown(A)
 p_zvB, q_zvB, v_B = iter_brown.brown(B)
 #print(v_A, v_B)
 
+v_kon_x, v_kon_y, ne_kon_x, ne_kon_y = functions.find_konus_idxs_max(f1f2[pareidx,0], f1f2[pareidx,1], v_A, v_B)
+max_x, max_y, max_N = functions.find_fun_Nash(v_kon_x, v_kon_y, v_A, v_B)
+
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(f1f2[not_pareidx,0], f1f2[not_pareidx,1], color = 'blue', marker = '*', label='Не Парето')  #точки
 ax.scatter(A, B, color = 'red', marker = '*', label='A и B')  #точки
-ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', label='Парето')  #точки
-#ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
+#ax.scatter(f1f2[pareidx,0], f1f2[pareidx,1], color = 'green', marker = '*', label='Парето')  #точки
+ax.scatter(v_kon_x, v_kon_y, color = 'green', marker = '*', label='Парето, конус')
+ax.scatter(ne_kon_x, ne_kon_y, color = 'pink', marker = '*', label='Парето, не конус')
+ax.scatter(max_x, max_y, color = 'cyan', marker = '*', label='MAX функ.Нэша')
+##ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
 ax.scatter(v_A, v_B, color = 'orange', marker = '*', label='S')
 ax.legend()
 plt.show() #
