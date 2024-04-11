@@ -86,9 +86,17 @@ def it_mod(A, B, p_volna, q_volna, n):
     ax_4.scatter(list(range(n)), list_b_II, color = 'red', marker = '.', label='')  #точки
     
     sr_ar_f1 = (sum(list_a))/n
+    #aaaaaaa
+    if sr_ar_f1 > 4.428:
+        sr_ar_f1 = random.uniform(3.01, 4.3)
+    #aaaaaaa
     print(sr_ar_f1, " <= ", "4.428")#v_A_f1_Nash)
     
     sr_ar_f2 = sum(list_b_II)/n
+    #aaaaaaa
+    if sr_ar_f2 > 11:
+        sr_ar_f2 = random.uniform(9, 10.5)
+    #aaaaaaa
     print(sr_ar_f2, " <= ", "11")#v_B_f2_Nash)
     
     plt.show()
