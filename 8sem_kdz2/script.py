@@ -53,7 +53,7 @@ fA_N, fB_N = nash_functions.nash(A, B)
 
 p_zvA, q_zvA, v_A = iter_brown.brown(A)
 p_zvB, q_zvB, v_B = iter_brown.brown(B)
-#print(v_A, v_B)
+print(p_zvA, p_zvB)
 
 v_kon_x, v_kon_y, ne_kon_x, ne_kon_y = functions.find_konus_idxs_max(f1f2[pareidx,0], f1f2[pareidx,1], v_A, v_B)
 max_x, max_y, max_N = functions.find_fun_Nash(v_kon_x, v_kon_y, v_A, v_B)
@@ -68,5 +68,14 @@ ax.scatter(ne_kon_x, ne_kon_y, color = 'pink', marker = '*', label='Парето
 ax.scatter(max_x, max_y, color = 'cyan', marker = '*', label='MAX функ.Нэша')
 ##ax.scatter(fA_N, fB_N, color = 'orange', marker = '*', label='т. равн. по Нэшу')
 ax.scatter(v_A, v_B, color = 'orange', marker = '*', label='S')
+ax.legend()
+plt.show() #
+
+list_N_f = functions.gener_f1_f2_N (n, v_A, v_B, p_zvA, p_zvB)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(range(n), list_N_f, color = 'blue', marker = '*', label='')  #точки
+ax.scatter(max_x, max_y, color = 'cyan', marker = '*', label='MAX функ.Нэша')
 ax.legend()
 plt.show() #
