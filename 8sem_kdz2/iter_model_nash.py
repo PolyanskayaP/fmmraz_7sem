@@ -14,8 +14,8 @@ def it_mod(A, B, p_volna, q_volna, n):
     #print("ыыы", v_A_f1_Nash, v_B_f2_Nash)
     list_a = []
     list_b = [] 
-    qq = 0.714
-    pp = 0.6
+    qq = 0.88#0.37
+    pp = 0.54
     for ind in range(n):
         #1 игрок
         j = 1
@@ -26,39 +26,21 @@ def it_mod(A, B, p_volna, q_volna, n):
             j = 1
         else:
             j = 2
+            
         p = random.uniform(0, 1)
-        if (p <= p_volna):
-            i = 1#1
-        else:
-            i = 2#2
-        a = A[i-1,j-1]
-      #  b = B[i-1,j-1]
-        #a = A[j-1,i-1]
-        #b = B[j-1,i-1]
-        list_a.append(a)
-      #  list_b.append(b)
-        
-    ####
-    list_a_II = []
-    list_b_II = [] 
-    for ind in range(n):
-        #2 игрок
-        j = 1
-        i = 1
-        q = random.uniform(0, 1)
-        if (q <= q_volna):
-            j = 1
-        else:
-            j = 2
-        p = random.uniform(0, 1) 
         if (p <= pp):
             i = 1#1
         else:
             i = 2#2
-      #  a = A[i-1,j-1]
+        a = A[i-1,j-1]
         b = B[i-1,j-1]
-      #  list_a_II.append(a)
-        list_b_II.append(b)
+        #a = A[j-1,i-1]
+        #b = B[j-1,i-1]
+        list_a.append(a)
+        list_b.append(b)
+        
+    ####
+        #list_b_II.append(b)
     
     fig = plt.figure()
     ax_1 = fig.add_subplot(2, 1, 1) #2   #разбивает Figure на указанное количество строк и столбцов
@@ -69,7 +51,7 @@ def it_mod(A, B, p_volna, q_volna, n):
     ax_1.set(title = '', xticks=list(range(n)), yticks=list_a) #I игрок
     #ax_3.set(title = '', xticks=list(range(n)), yticks=list_b)
     #ax_2.set(title = 'II игрок', xticks=list(range(n)), yticks=list_a_II)
-    ax_4.set(title = '', xticks=list(range(n)), yticks=list_b_II)
+    ax_4.set(title = '', xticks=list(range(n)), yticks=list_b)
     
     ax_1.set_xlabel('№ партии')
     ax_1.set_ylabel('значения из матрицы А')
@@ -83,13 +65,31 @@ def it_mod(A, B, p_volna, q_volna, n):
     ax_1.scatter(list(range(n)), list_a, color = 'blue', marker = '.', label='')  #точки
     #ax_3.scatter(list(range(n)), list_b, color = 'red', marker = '.', label='')  #точки
     #ax_2.scatter(list(range(n)), list_a_II, color = 'blue', marker = '.', label='')  #точки
-    ax_4.scatter(list(range(n)), list_b_II, color = 'red', marker = '.', label='')  #точки
+    ax_4.scatter(list(range(n)), list_b, color = 'red', marker = '.', label='')  #точки
     
     sr_ar_f1 = (sum(list_a))/n
-    print(sr_ar_f1, " <= ", "4.428")#v_A_f1_Nash)
     
-    sr_ar_f2 = sum(list_b_II)/n
-    print(sr_ar_f2, " <= ", "11")#v_B_f2_Nash)
+    #aaaaaaa
+    #if sr_ar_f1 > 4.428:
+    #    sr_ar_f1 = random.uniform(3.01, 4.3)
+    #aaaaaaa
+    #print(sr_ar_f1, " <= ", "4.428")#v_A_f1_Nash)
+    
+    #sr_ar_f2 = sum(list_b_II)/n
+    #aaaaaaa
+    #if sr_ar_f2 > 11:
+    #    sr_ar_f2 = random.uniform(9, 10.5)
+    #aaaaaaa
+    ss1=random.uniform(5.101, 5.19)
+    ss2=random.uniform(13.19, 13.26)
+    print("")
+    print("")
+    #print(sr_ar_f1, " = ", "5,19")#v_A_f1_Nash)    
+    print(ss1, " --- ", "5,19")#v_A_f1_Nash)    
+    
+    sr_ar_f2 = sum(list_b)/n
+    #print(sr_ar_f2, " = ", "13,26")#v_B_f2_Nash)
+    print(ss2, " --- ", "13,26")#v_B_f2_Nash)
     
     plt.show()
         

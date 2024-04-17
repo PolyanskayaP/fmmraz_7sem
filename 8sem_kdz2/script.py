@@ -41,9 +41,10 @@ def gener_f1_f2 (n):
         f2 = np.dot ( np.dot(pp , B) , qq)
         list_f_1_2.append([f1[0][0], f2[0][0]])
         #print("f1:", f1[0][0], " f2:", f2[0][0])
-    return np.array(list_f_1_2)
+    return np.array(list_f_1_2), p, q
 
-f1f2 = gener_f1_f2(n)
+f1f2, p_mass, q_mass = gener_f1_f2(n) #!!!!!!
+#print(p_mass, q_mass)
 
 pareidx, not_pareidx = pareto.find_pareto(f1f2[:,0], f1f2[:,1], "MAX")
 #print(pareidx)
@@ -57,6 +58,10 @@ print(p_zvA, p_zvB)
 
 v_kon_x, v_kon_y, ne_kon_x, ne_kon_y = functions.find_konus_idxs_max(f1f2[pareidx,0], f1f2[pareidx,1], v_A, v_B)
 max_x, max_y, max_N = functions.find_fun_Nash(v_kon_x, v_kon_y, v_A, v_B)
+print(max_x, max_y, max_N)
+#v_kon_x5, v_kon_y5, ne_kon_x5, ne_kon_y5 = functions.find_konus_idxs_max(f1f2[pareidx,0], f1f2[pareidx,1], v_A, v_B)
+#max_x5, max_y5, max_N5 = functions.find_fun_Nash(f1f2[0], f1f2[1], v_A, v_B)
+#print(max_x5, max_y5, max_N5)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -71,11 +76,17 @@ ax.scatter(v_A, v_B, color = 'orange', marker = '*', label='S')
 ax.legend()
 plt.show() #
 
-list_N_f = functions.gener_f1_f2_N (n, v_A, v_B, p_zvA, p_zvB)
-
+######list_N_f = functions.gener_f1_f2_N (n, v_A, v_B, p_zvA, p_zvB)
+'''
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(range(n), list_N_f, color = 'blue', marker = '*', label='')  #точки
 ax.scatter(max_x, max_y, color = 'cyan', marker = '*', label='MAX функ.Нэша')
 ax.legend()
 plt.show() #
+'''
+iter_model_nash.it_mod(A, B, 0.1, 0.1, 1000) #A, B, p_volna, q_volna, n # 0.6 0.714
+
+#v_A, v_B
+N_f1_f2_gar = (v_A - v_A) * (v_B - v_B)
+print(N_f1_f2_gar)

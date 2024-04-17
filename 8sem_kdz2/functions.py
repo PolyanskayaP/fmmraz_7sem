@@ -26,6 +26,7 @@ def find_fun_Nash(x_list, y_list, v_A, v_B):
             max_N = N_f1_f2
             max_x = x 
             max_y = y 
+    print("max_N_fun = ", max_N)
     return max_x, max_y, max_N
 
 def Nash_1(v_A, v_B, pg, qg):
